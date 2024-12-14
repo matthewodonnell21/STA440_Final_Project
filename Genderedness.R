@@ -34,15 +34,18 @@ decade_gender[6] = sum(names$ppm.2000_2008 * abs(names$name.gender)) / sum(names
 plot_data = data.frame(period = 1:6, gender = decade_gender)
 
 
-plot = ggplot(plot_data, aes(x=period, y=gender)) + 
+plot = ggplot(plot_data, aes(x = period, y = gender)) + 
   geom_point() +
   geom_smooth(method = "lm", aes(color = "Linear Model")) +  
   geom_smooth(aes(color = "Smoothed Trend")) +              
-  ggtitle("Changes in Gender-Specific Name Usage Over Time") +
+  ggtitle("Changes in Gender-Specific Name Usage Over Time", 
+          subtitle = "Weighted Average by Parts-per-Million") + 
   xlab("Birthing Cohort") +                               
-  ylab("Weighted-Average Gender Specificity") +
-  scale_color_manual(values = c("Linear Model" = "blue", 
-                                "Smoothed Trend" = "red")) 
+  ylab("Avg. Gender Specificity") +                       
+  scale_color_manual(name = "Trend Lines",        
+                     values = c("Linear Model" = "blue", 
+                                "Smoothed Trend" = "red"))
+
 
 plot
 
