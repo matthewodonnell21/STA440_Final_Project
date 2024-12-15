@@ -1,5 +1,4 @@
 library(tidyverse)
-library(rstanarm)
 
 names = read_csv("data/givenname.csv")
 
